@@ -1,1 +1,95 @@
-Testing... Testing... Hello
+<!DOCTYPE html>
+<script src="uiJs.js"></script>
+
+<head>
+    <link href="style.css" rel="stylesheet" />
+    <meta charset=utf-8 />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="http://cytoscape.github.io/cytoscape.js/api/cytoscape.js-latest/cytoscape.min.js"></script>
+    <script src="uiCode.js"></script>
+
+    
+    <!-- Bootstrap core CSS -->
+<!--    <link href="../dist/css/bootstrap.min.css" rel="stylesheet">-->
+    <link href="bootstrap-mod.css" rel="stylesheet">
+        
+</head>
+
+<html>
+    <body>
+        <div id="header">
+            <h1>Hidden Markov Models<small> Computation visualization </small></h1>
+        </div>
+        <div class="row-fluid">
+            <div class="span8">
+                <div id="hmm"></div>
+                <div id="cy"></div>
+                <div class="info-div" id="info-bar">
+                    <span id="NodeCalcInfo">Select a node to see how it is computed</span>
+                </div>
+                <div id="navBar" class="pagination pagination-large pagination-right" >
+                    <ul>
+                        <li class="disabled" id="backNavButton"><a href="#" onclick="backButtonClicked();return false;">Back</a></li>
+                        <li class="disabled" id="forwardNavButton"><a href="#" onclick="nextButtonClicked();return false;">Next</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="span4">
+                <div id="controls">
+                    <br>
+                    <br>
+                    <div id="hmmSettingsMain" style="width:57%">
+                        <br>
+                        Algorithm<br>
+                        <select name="algorithm" class="form-control" id="algorithmSelector" onchange="algorithmChanged()">
+                            <option value="forward">Forward</option>
+                            <option value="viterbi">Viterbi</option>
+                        </select>
+                        <br>
+                       
+                        Number of States
+                        <input type="number" class="form-control" id="numberOfStatesInput" placeholder="Number of states" onchange="numberOfStatesChanged()">
+                           
+                        <input type="text" class="form-control" id="observationsInput" onchange="observationsChanged()" placeholder="Observation">
+                        Initial Probabilities
+                        <br>
+                        <input type="text" class="form-control" id="initialProbInput" onchange="initialProbChanged()">
+                        <br>
+                    </div>
+                    
+                    <div class="visibleHmmSettingsInfo" id="hmmSettingsInf" style="width:57%">
+                       Select a state to change its default settings
+                    </div>
+                    <div class="hiddenHmmSettings" id="hmmSettings" style="width:57%">
+                        <br>
+                        Observation Probabilities
+                        <br>
+                        <input type="text" class="form-control" id="observationProbInputs" onchange="observationProbChanged()" placeholder="Comma separeted probs">
+                        Transition Probablities
+                        <br>
+                        <input type="text" class="form-control" id="transitionProbInputs" onchange="transProbChanged()" placeholder="Comma separeted probs">
+                    </div>
+                
+<!--                    Animation Speed(step per minute)<br>-->
+<!--                    <select name="animSpeed" class="form-control">-->
+<!--                        <option value="20">20</option>-->
+<!--                        <option value="40">40</option>-->
+<!--                        <option value="60">60</option>-->
+<!--                    </select>-->
+                    <br>
+                    <Button class="btn btn-primary" id="startStopButton" onclick="EvaluateButtonPressed()">Evaluate</Button>
+                    <input type="checkbox" id="autoModeCheckBox" onchange="autoModeChanged()" checked> Auto
+                </div>
+
+            </div>
+        </div>
+        
+        
+        <!-- Bootstrap core JavaScript
+         ================================================== -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/mathjs/1.1.1/math.js"></script>
+        <script src="hmm.js"></script>
+        <script src="../dist/js/bootstrap.min.js"></script>
+    </body>
+</html>
